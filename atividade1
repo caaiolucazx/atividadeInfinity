@@ -1,17 +1,43 @@
-def calcular_area_retangulo(base, altura):
-    area = base * altura
-    return area
+num_alunos = int(input("Digite o número de alunos: "))
 
-def main():
+soma_medias = 0
 
-    base = float(input("Digite o valor da base do retângulo: "))
-    altura = float(input("Digite o valor da altura do retângulo: "))
-    
+resultados = []
 
-    area = calcular_area_retangulo(base, altura)
-    
-    
-    print("A área do retângulo é:", area)
 
-if __name__ == "__main__":
-    main()
+
+for _ in range(num_alunos):
+
+    nome = input("\nDigite o nome do aluno: ")
+
+    notas = [float(input(f"Digite a nota {j + 1} do aluno {nome}: ")) for j in range(3)]
+
+    media = sum(notas) / 3
+
+    status = "Aprovado" if media >= 7.0 else "Reprovado"
+
+    resultados.append((nome, notas, media, status))
+
+    soma_medias += media
+
+
+
+media_geral = soma_medias / num_alunos
+
+
+
+print("\nResultados:")
+
+for nome, notas, media, status in resultados:
+
+    print(f"Aluno: {nome}")
+
+    print(f"Notas: {notas}")
+
+    print(f"Média: {media:.2f}")
+
+    print(f"Status: {status}\n")
+
+
+
+print(f"Média geral da turma: {media_geral:.2f}")
